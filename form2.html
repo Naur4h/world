@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+
+       .item1 {
+        grid-area: area1;
+        background-color: rgb(207, 245, 176);
+        padding: 30px;
+        border-radius: 20px;
+        margin-top: 20px;
+        
+       }
+
+       
+       .item2 {
+        grid-area: area2;
+        background-color: rgb(235, 147, 195);
+        padding: 30px;
+        border-radius: 20px;
+        margin-top: 20px;
+       }
+
+
+       
+       .item3 {
+        grid-area: area3;
+        background-color: rgb(212, 89, 141);
+        padding: 30px;
+        border-radius: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+       }
+
+
+       
+       .item4 {
+        grid-area: area4;
+        background-color: rgb(161, 216, 238);
+        padding: 30px;
+        border-radius: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+        
+       }
+
+       .grid-container {
+        display: grid;
+        grid-template-areas: "area1 area1 area1"
+                             "area2 area3 area3"
+                             " .    area4 area4";
+        width: 1000px;
+       
+                             
+       }
+
+       .flex-container {
+        display: flex;
+        justify-content: center;
+        
+       }
+
+
+       
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="item1">One</div>
+        <div class="item2">Two</div>
+        <div class="item3">Three</div>
+        <div class="item4">four</div>
+
+    </div>
+
+    <script>
+        // Menampilkan jam yang terus terupdate
+        function updateJam() {
+            const now = new Date();
+            const jam = now.toLocaleTimeString();
+            document.getElementById('jam').innerText = jam;
+        }
+        setInterval(updateJam, 1000);
+
+        // Menambah form baru
+        document.getElementById('addForm').addEventListener('click', function() {
+            const formContainer = document.getElementById('additionalForms');
+            const newForm = document.createElement('div');
+            newForm.innerHTML = `
+                <label for="nama">Nama: </label>
+                <input type="text" oninput="this.value = this.value.toUpperCase();">
+                <br><br>
+                <label for="nim">NIM: </label>
+                <input type="number">
+                <br><br>
+                <label for="jenisKelamin">Jenis Kelamin: </label>
+                <select name="Jenis Kelamin">
+                    <option value="">--Pilih Jenis Kelamin--</option>
+                    <option value="Pria">Pria</option>
+                    <option value="Wanita">Wanita</option>
+                </select>
+                <br><br>
+            `;
+            formContainer.appendChild(newForm);
+        });
+
+        // submit form
+        document.getElementById('mahasiswaForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah reload halaman
+            alert("Selamat data telah berhasil disimpan");
+            location.reload(); // Me-refresh halaman
+        });
+    </script>
+
+      
+</body>
+</html>
